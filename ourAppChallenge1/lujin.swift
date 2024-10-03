@@ -12,9 +12,9 @@ struct ProfileView: View {
     @State private var selectedItem: PhotosPickerItem? = nil
     @State private var selectedImageData: Data? = nil
     var body: some View {
-        VStack{
+        VStack (spacing:10){
             //profile image
-          /*  if let selectedImageData,
+           if let selectedImageData,
                let uiImage = UIImage(data: selectedImageData){
                 Image(uiImage: uiImage)
                     .resizable()
@@ -24,26 +24,27 @@ struct ProfileView: View {
                     .overlay(Circle().stroke(Color.gray, lineWidth: 2))
             }else{
                 // Default Placeholder when no image is selected
-                Image(systemName:"person.crop.circle.fill.badge.plus")
+                Image(systemName:"person.crop.circle.fill")
                     .resizable()
                     .scaledToFill()
                     .frame(width: 150, height: 160)
                     .foregroundColor(.gray)
                     .clipShape(Circle())
-            }*/
+            }
             // Button to select profile picture
             PhotosPicker(
                 selection: $selectedItem,
                 matching: .images,
                 photoLibrary: .shared()) {
-                    Image(systemName:"person.crop.circle.fill.badge.plus")
-                        .frame(width: 150, height: 160)
-                    //Text("Select Profile Picture")
-                       // .font(.headline)
+                   // Image(systemName:"plus")
+                        //"person.crop.circle.fill.badge.plus"
+                    Text("Select Profile Picture")
+                        .frame(width:160, height: 20)
+                    // .font(.headline)
                         .padding()
-                        .background(Color.black)
+                        .background(Color.myOrange)
                        // .foregroundColor(.white)
-                       // .cornerRadius(15)
+                       .cornerRadius(18)
                 }
                 .onChange(of: selectedItem) { newItem in
                     Task {
@@ -96,7 +97,42 @@ struct lujin: View {
             
             @State var selectedSex: String=""
         
-        VStack{
+        VStack (spacing:10){
+            ZStack{
+                HStack {
+                    Text("Cat's Name")
+                        .padding(.bottom, 50.0)
+                       // .offset(x: -153, y:-400)
+                    TextField("Enter youe cat's name", text:$Name)
+                       // .offset(x: 82, y:-425)
+                    Divider()
+                       // .offset(x: -19, y:-400)
+                        .frame(width: 300)
+                }
+                HStack{
+                    Text("Cat's Weight")
+                        .multilineTextAlignment(.leading)
+                        .padding(.bottom, -500.0)
+                       // .offset(x: -146, y:-380)
+                    TextField("Enter youe cat's weight", text:$Weight)
+                        //.offset(x: 90, y:-370)
+                    Divider()
+                        //.offset(x: -19, y:-350)
+                        .frame(width: 300)
+                }
+                HStack{
+                    Text("Cat's Age")
+                        .foregroundColor(.black)
+                        .multilineTextAlignment(.leading)
+                        .padding(.bottom, -500.0)
+                        .foregroundColor(.black)
+                        //.offset(x: -153, y:-330)
+                    TextField("Enter youe cat's age", text:$Age)
+                        //.offset(x: 75, y:-317)
+                    Divider()
+                        //.offset(x: -19, y:-300)
+                    .frame(width: 300) }
+            }
             ProfileView()
             RoundedRectangle(cornerRadius: 25)
                 .fill(Color.accent)
@@ -108,39 +144,7 @@ struct lujin: View {
                 .frame(width: 380, height: 195)
             .shadow(radius: 3) }
         
-        ZStack{
-            Text("Name")
-                .padding(.bottom, 50.0)
-                .offset(x: -153, y:-400)
-            TextField("Enter youe cat's name", text:$Name)
-                .offset(x: 82, y:-425)
-            Divider()
-                .offset(x: -19, y:-400)
-                .frame(width: 300)
-            
-            
-            Text("Weight")
-                .multilineTextAlignment(.leading)
-                .padding(.bottom, -500.0)
-                .offset(x: -146, y:-380)
-            TextField("Enter youe cat's weight", text:$Weight)
-                .offset(x: 90, y:-370)
-            Divider()
-                .offset(x: -19, y:-350)
-                .frame(width: 300)
-            
-            
-            Text("Age")
-                .foregroundColor(.black)
-                .multilineTextAlignment(.leading)
-                .padding(.bottom, -500.0)
-                .foregroundColor(.black)
-                .offset(x: -153, y:-330)
-            TextField("Enter youe cat's age", text:$Age)
-                .offset(x: 75, y:-317)
-            Divider()
-                .offset(x: -19, y:-300)
-            .frame(width: 300) }
+        
 
         /*VStack{
             Picker(selection: @selected, label: Text("Picker"), content: {
@@ -157,7 +161,7 @@ struct lujin: View {
             }
             
         }*/
-    ZStack {
+   /* ZStack {
             Group{
             Text("selecteyour cat sex \(selectedSex)")
                     .offset(x: -2, y:-280)
@@ -166,7 +170,7 @@ struct lujin: View {
                 .pickerStyle(.segmented)
                 .offset(x: -2, y:-250)
                 //Text("Uterine condition")
-            }}
+            }}*/
         }
         }
 #Preview {
