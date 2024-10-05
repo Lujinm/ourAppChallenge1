@@ -19,9 +19,7 @@ struct lujin: View {
     @State var selected = 0
     @State var selectedSex: String=""
     
-    let sex:[String]=[
-            "kitten",
-            "adult" ]
+    let sex:[String]=["Kitten", "Adult" ]
 
 var body: some View {
     
@@ -84,9 +82,9 @@ var body: some View {
                 Divider()
                 //age roller
                         Group{
-                        Text("your cat age '\(selectedSex)'")
+                        Text("Your cat age '\(selectedSex)'")
                                 .padding()
-                            Picker("choose your cat sex", selection: $selectedSex){
+                            Picker("Choose your cat sex", selection: $selectedSex){
                                 ForEach(sex, id: \.self) {sex in Text(sex)}}
                             .pickerStyle(.segmented)
                         }
@@ -99,12 +97,10 @@ var body: some View {
 }
 }
 
-// Preview
+//Preview
 struct ProfileView_Previews: PreviewProvider {
 static var previews: some View {
 lujin()
 }
 }
-#Preview {
-lujin()
-}
+
