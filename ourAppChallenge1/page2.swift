@@ -20,9 +20,9 @@ struct page2: View {
     let ageOptions: [String] = ["Kitten", "Adult"]
     
     var body: some View {
+        NavigationView{
         VStack(spacing: 30) {
             Spacer()
-            
             // عرض صورة الملف الشخصي
             if let selectedImageData,
                let uiImage = UIImage(data: selectedImageData) {
@@ -40,7 +40,6 @@ struct page2: View {
                     .foregroundColor(.gray)
                     .clipShape(Circle())
             }
-            
             // زر لاختيار صورة الملف الشخصي
             PhotosPicker(
                 selection: $selectedItem,
@@ -91,33 +90,6 @@ struct page2: View {
                         }
                         .pickerStyle(SegmentedPickerStyle())
                     }
-                    
-                    // زر حفظ المعلومات
-                    Button(action: {
-                        // تحقق من الوزن وحالة الوزن
-                        let weightValue = Double(weight) ?? 0.0
-                        var weightStatus: String
-                        
-                        if weightValue < 4 {
-                            weightStatus = "Underweight"
-                        } else if weightValue <= 5 {
-                            weightStatus = "Normal"
-                        } else {
-                            weightStatus = "Overweight"
-                        }
-                        
-                        let newCat = Cat(name: name, weight: weight, age: selectedAge, imageData: selectedImageData, weightStatus: weightStatus)
-                        cats.append(newCat) // إضافة القطة إلى المصفوفة
-                        presentationMode.wrappedValue.dismiss() // إغلاق الشاشة بعد الحفظ
-                    }) {
-                        Text("Save")
-                            .padding()
-                            .frame(width: 100, height: 30)
-                            .background(Color.orange)
-                            .foregroundColor(.white)
-                            .cornerRadius(18)
-                    }
-                    
                     Spacer()
                 }
                 .padding()
@@ -125,7 +97,37 @@ struct page2: View {
             
             Spacer()
         }
+        .navigationTitle("Add Cat")
+        .toolbar{
+            ToolbarItem(placement: .cancellationAction){
+                Button("Cancel"){
+                    presentationMode.wrappedValue.dismiss()
+                }
+                .foregroundColor(.orange)
+            }
+            ToolbarItem(placement: .confirmationAction){
+                Button("Save"){
+                    let weightValue = Double(weight) ?? 0.0
+                    var weightStatus: String
+                    
+                    if weightValue < 4 {
+                        weightStatus = "Underweight"
+                    } else if weightValue <= 5 {
+                        weightStatus = "Normal"
+                    } else {
+                        weightStatus = "Overweight"
+                    }
+                    
+                    let newCat = Cat(name: name, weight: weight, age: selectedAge, imageData: selectedImageData, weightStatus: weightStatus)
+                    cats.append(newCat) // إضافة القطة إلى المصفوفة
+                    presentationMode.wrappedValue.dismiss() // إغلاق الشاشة بعد الحفظ
+                }
+                .foregroundColor(.orange)
+                .bold()
+            }
+        }
     }
+}
 }
 // Preview
 #Preview {

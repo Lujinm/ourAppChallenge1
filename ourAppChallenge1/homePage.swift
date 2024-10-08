@@ -5,6 +5,9 @@
 //  Created by lujin mohammed on 02/04/1446 AH.
 //
 
+
+
+
 import SwiftUI
 
 struct homePage: View {
@@ -14,7 +17,7 @@ struct homePage: View {
     
     var body: some View {
         NavigationView {
-            VStack {
+            VStack (spacing: 20) {
                 Text("My Cats")
                     .font(.largeTitle)
                     .padding()

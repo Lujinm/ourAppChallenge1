@@ -8,13 +8,13 @@
 import SwiftUI
 
 @main
-struct ourAppChallenge1App: App {
+struct ourAppChallenge1App : App {
     var body: some Scene {
         
         
         
         WindowGroup {
-            lujin()
+            ContentView()
         }
     }
 }

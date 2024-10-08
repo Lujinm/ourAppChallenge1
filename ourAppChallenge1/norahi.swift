@@ -3,16 +3,16 @@ import Charts
 
 struct norahi: View {
     @State private var isChecked = false //for the check
-    //@Binding var Name: String
+
     var body: some View {
-        VStack {
+        VStack() {
+            
             
             Text("The progress")
                 .font(.largeTitle)
                 .fontWeight(.bold)
                 .padding(.trailing, 150.0)
                 .padding(.top, 100.0)
-            //Frist section
             ZStack{
                 RoundedRectangle(cornerRadius: 25)
                     .fill(Color.accent)
@@ -21,12 +21,15 @@ struct norahi: View {
                     .frame(width: 370, height: 250)
                 
                 VStack{
-                    HStack{
-                        Text("Cat name")
-                      //  Text($Name)
-                    }
                     
-                        //.padding(.trailing, 50.0)
+                    
+                    Text("name")
+                        .padding(.trailing, 50.0)
+                        
+                    
+                   
+                        
+                        
                         
                     
                     Text("cat state")
@@ -42,7 +45,7 @@ struct norahi: View {
                 }
             }
             Spacer()
-            //first meal
+            
             ZStack {
                 RoundedRectangle(cornerRadius: 20)
                     .fill(Color.accent)
@@ -59,6 +62,7 @@ struct norahi: View {
                         .frame(width: 40, height: 40)
                     
                     
+                    
                     Text("First meal")
                         .font(.title2)
                         .fontWeight(.bold)
@@ -68,6 +72,7 @@ struct norahi: View {
                         .padding(.bottom, 29.0)
                     
                     
+                    
                     Spacer()
                     Button(action: {
                         isChecked.toggle()
@@ -75,7 +80,7 @@ struct norahi: View {
                         Image(systemName: isChecked ? "checkmark.circle.fill" : "circle")
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 40, height: 40)
+                            .frame(width: 40, height: 40) //
                             .foregroundColor(isChecked ? Color(hex: "F24405") : .black)
                             .padding(25)
                     }
@@ -86,14 +91,13 @@ struct norahi: View {
                     
                         .padding(.top, 30)
                         .padding(.trailing, 135.0)
-                    
                 }
                 
                 
                 .padding()
             }
+            //fist meal
             
-            //second meal
             ZStack {
                 RoundedRectangle(cornerRadius: 20)
                     .fill(Color.accent)
@@ -108,6 +112,8 @@ struct norahi: View {
                         .aspectRatio(contentMode: .fill)
                         .padding(.leading, 60.0)
                         .frame(width: 30, height: 30)
+                    
+                    
                     
                     Text("Second meal")
                         .font(.title2)
@@ -143,9 +149,8 @@ struct norahi: View {
                 
                 .padding()
             }
+            //second meal
             
-            //third meal
-           
             ZStack {
                 RoundedRectangle(cornerRadius: 20)
                     .fill(Color.accent)
@@ -154,15 +159,13 @@ struct norahi: View {
                     .shadow(radius: 3)
                 
                 HStack {
-                    Image(systemName: "moon.stars")
+                    Image(systemName: "moon.stars.fill")
                         .renderingMode(.original)
                         .resizable()
                         .aspectRatio(contentMode: .fill)
-                        //.foregroundColor(Color.black)
+                        .foregroundColor(Color.black)
                         .padding(.leading, 60.0)
                         .frame(width: 40, height: 40)
-                    
-                    
                     
                     Text("Third meal")
                         .font(.title2)
@@ -171,9 +174,6 @@ struct norahi: View {
                         .multilineTextAlignment(.leading)
                         .padding(.leading, 30.0)
                         .padding(.bottom, 29.0)
-                        
-                    
-                    
                     
                     Spacer()
                     Button(action: {
@@ -271,18 +271,13 @@ struct norahi: View {
                         .padding(.leading, 60.0)
                         .frame(width: 40, height: 40)
                     
-                    
-                    
                     Text("Activity")
                         .font(.title2)
                         .fontWeight(.bold)
                         .foregroundColor(Color("chart 3rd color 2"))
                         .multilineTextAlignment(.leading)
                         .padding(.leading, 39.0)
-                        
-                    
-                    
-                    
+                   
                     Spacer()
                     Button(action: {
                         isChecked.toggle()
